@@ -1,0 +1,19 @@
+{
+	"name": "AzureDatabricksDeltaLakefforSink",
+	"properties": {
+		"annotations": [],
+		"type": "AzureDatabricksDeltaLake",
+		"typeProperties": {
+			"domain": "https://adb-7405611364336068.8.azuredatabricks.net",
+			"clusterId": "0926-141711-3e4lwxb6",
+			"accessToken": {
+				"type": "AzureKeyVaultSecret",
+				"store": {
+					"referenceName": "LinkAzureKeyVault",
+					"type": "LinkedServiceReference"
+				},
+				"secretName": "adfdbrtoken"
+			}
+		}
+	}
+}
