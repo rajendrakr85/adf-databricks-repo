@@ -1,0 +1,59 @@
+{
+	"name": "adf-databricks-pipeline",
+	"properties": {
+		"activities": [
+			{
+				"name": "Copy data adls",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"enableStaging": false
+				}
+			},
+			{
+				"name": "copy wait",
+				"type": "Wait",
+				"dependsOn": [
+					{
+						"activity": "Copy data adls",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"typeProperties": {
+					"waitTimeInSeconds": 30
+				}
+			},
+			{
+				"name": "databricks Job",
+				"type": "DatabricksJob",
+				"dependsOn": [
+					{
+						"activity": "copy wait",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": []
+			}
+		],
+		"annotations": []
+	}
+}
