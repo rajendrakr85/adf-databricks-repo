@@ -1,0 +1,12 @@
+{
+	"name": "ADLSDatasetSink",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureDatabricksDeltaLakefforSink",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureDatabricksDeltaLakeDataset",
+		"schema": []
+	}
+}
